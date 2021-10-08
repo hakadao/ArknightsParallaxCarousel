@@ -1,0 +1,323 @@
+@font-face {
+  font-family: Bender;
+  src: url(../font/Bender.woff);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #111111;
+  user-select: none;
+  font-family: sans-serif;
+}
+
+@media only screen and (max-width: 1600px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 428px), screen and (max-height: 926px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 414px), screen and (max-height: 800px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 375px), screen and (max-height: 720px) {
+  html {
+    font-size: 13px;
+  }
+}
+@media only screen and (max-width: 360px), screen and (max-height: 640px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 320px), screen and (max-height: 560px) {
+  html {
+    font-size: 11px;
+  }
+}
+
+body {
+  background-image: url(../img/bg.jpg);
+  background-size: cover;
+  background-position: center bottom;
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#section-media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  color: #e3e3e3;
+  transform: translateZ(1px);
+}
+
+/* 箭咀樣式 */
+#section-media .media-nav-btn {
+  position: relative;
+  width: 5.63rem;
+  flex: none;
+  z-index: 1;
+}
+
+.arrowBtn svg {
+  fill: #666666;
+  transition: fill 0.3s;
+  cursor: pointer;
+}
+.arrowBtn svg circle,
+.arrowBtn svg use {
+  transition: transform 0.3s;
+}
+
+.arrowBtn:hover.prev svg,
+.arrowBtn.clicked.prev svg,
+.arrowBtn:hover.next svg,
+.arrowBtn.clicked.next svg {
+  fill: #d6d6d6;
+}
+
+.arrowBtn:hover.prev svg .dot,
+.arrowBtn.clicked.prev svg .dot,
+.arrowBtn:hover.next svg .dot,
+.arrowBtn.clicked.next svg .dot {
+  transform: scale(1);
+}
+
+.arrowBtn:hover.prev svg .top,
+.arrowBtn.clicked.prev svg .top {
+  transform: translate(8%, -8%);
+}
+
+.arrowBtn:hover.prev svg .bot,
+.arrowBtn.clicked.prev svg .bot {
+  transform: translate(8%, 8%);
+}
+
+.arrowBtn:hover.next svg .top,
+.arrowBtn.clicked.next svg .top {
+  transform: translate(-8%, -8%);
+}
+
+.arrowBtn:hover.next svg .bot,
+.arrowBtn.clicked.next svg .bot {
+  transform: translate(-8%, 8%);
+}
+
+/* 左箭咀 */
+#section-media .media-nav-btn.prev {
+  margin-left: 8.13rem;
+}
+
+/* 右箭咀 */
+#section-media .media-nav-btn.next {
+  margin-right: 8.13rem;
+}
+
+#section-media .media-main-view .media-main-pic .media-img {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+#section-media .media-main-view .media-main-pic {
+  position: relative;
+  width: 51.88rem;
+  height: 29.13rem;
+  margin-left: 5.25rem;
+}
+
+#section-media .media-user-interactive {
+  position: relative;
+  float: left;
+  margin-top: -15rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#section-media .media-user-interactive .media-current-info {
+  height: 16.25rem;
+  width: 57.13rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#section-media .media-user-interactive .media-current-info .media-info-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#section-media
+  .media-main-view
+  .media-user-interactive
+  .media-current-info
+  .media-info-serial {
+  font-family: 'Bender';
+}
+
+#section-media
+  .media-user-interactive
+  .media-current-info
+  .media-info-wrapper
+  .media-info-serial {
+  padding-left: 0.94rem;
+  letter-spacing: 0.31rem;
+  font-size: 5.63rem;
+}
+
+#section-media
+  .media-user-interactive
+  .media-current-info
+  .media-info-wrapper
+  .media-info-title {
+  font-size: 3.13rem;
+  padding: 0.94rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+#section-media
+  .media-user-interactive
+  .media-current-info
+  .media-info-wrapper
+  .media-info-detail {
+  padding-left: 0.94rem;
+}
+
+/* 輪播右下指示標 */
+#section-media .media-user-interactive .media-current-info .media-nav-wrapper {
+  pointer-events: auto;
+}
+
+#section-media
+  .media-user-interactive
+  .media-current-info
+  .media-nav-wrapper
+  .media-nav-item {
+  display: inline-block;
+  cursor: pointer;
+}
+
+#section-media
+  .media-user-interactive
+  .media-current-info
+  .media-nav-wrapper
+  .media-nav-item::after {
+  content: '';
+  display: inline-block;
+  margin-left: 0.5rem;
+  width: 0.38rem;
+  height: 1rem;
+  transition: background-color 0.3s, transform 0.3s;
+  transform: skewX(-30deg) scale(1);
+  background-color: gray;
+}
+
+#section-media
+  .media-user-interactive
+  .media-current-info
+  .media-nav-wrapper
+  .media-nav-item[active='true']::after {
+  transform: skewX(-30deg) scale(1.2);
+}
+
+#section-media
+  .media-user-interactive
+  .media-current-info
+  .media-nav-wrapper
+  .media-nav-item:hover::after,
+#section-media
+  .media-user-interactive
+  .media-current-info
+  .media-nav-wrapper
+  .media-nav-item[active='true']::after {
+  background-color: white !important;
+}
+
+#section-media .media-list-wrapper {
+  margin-top: 5.63rem;
+  height: 7.13rem;
+}
+
+#section-media .media-list-wrapper .media-list-item {
+  display: inline-block;
+  width: 12.75rem;
+  height: 7.13rem;
+  padding: 0 1.44rem;
+  position: absolute;
+  transition: opacity 0.5s, transform 0.5s;
+  cursor: pointer;
+}
+
+#section-media .media-list-wrapper .media-list-item .media-list-item-img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+  transform: scale(1);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+#section-media .media-list-wrapper .media-list-item:hover .media-list-item-img {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+#section-media
+  .media-list-wrapper
+  .media-list-item
+  .media-list-item-img::after {
+  content: attr(data-title);
+  display: inline-block;
+  background: linear-gradient(0, #000000, transparent) center center / auto auto
+    no-repeat;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 0.31rem;
+  padding-top: 0.63rem;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+}
+
+#section-media
+  .media-list-wrapper
+  .media-list-item:hover
+  .media-list-item-img::after {
+  transform: translateY(0);
+}
