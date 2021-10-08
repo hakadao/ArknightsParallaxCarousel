@@ -1,6 +1,7 @@
 # ArknightsParallaxCarousel
 
-官網效果視差輪播圖模仿實現
+官網效果視差輪播圖模仿實現🎉
+👉[演示網站](https://hakadao.github.io/ArknightsParallaxCarousel/)
 
 ## 效果圖
 
