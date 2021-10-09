@@ -101,6 +101,7 @@ for (let i = 0; i < carouselList.length; i++) {
   } else {
     mediaItem.style.transform = `translateX(${xWidth * 3}px)`
     mediaItem.style.opacity = 0
+    mediaItem.style.pointerEvents = 'none'
   }
 
   // 輪播列表 輪播指示標同時添加點擊處理器
@@ -256,14 +257,17 @@ function setSlidePosition(activeIndex) {
     if (xPosition <= -xWidth) {
       mediaItem.style.transform = `translateX(${-xWidth}px)`
       mediaItem.style.opacity = 0
+      mediaItem.style.pointerEvents = 'none'
     } else if (xPosition >= xWidth * 4) {
       mediaItem.style.transform = `translateX(${xWidth * 4}px)`
       mediaItem.style.opacity = 0
+      mediaItem.style.pointerEvents = 'none'
     } else {
       mediaItem.style.transform = `translateX(${
         xWidth * i - xWidth * (activeIndex - 1)
       }px)`
       mediaItem.style.opacity = 1
+      mediaItem.style.pointerEvents = 'auto'
     }
 
     if (activeIndex === 0) {
@@ -274,6 +278,9 @@ function setSlidePosition(activeIndex) {
         mediaList.querySelector(
           `.media-list-item:nth-child(${carouselList.length})`
         ).style.opacity = 1
+        mediaList.querySelector(
+          `.media-list-item:nth-child(${carouselList.length})`
+        ).style.pointerEvents = 'auto'
       }
     }
 
@@ -285,6 +292,9 @@ function setSlidePosition(activeIndex) {
         mediaList.querySelector(
           `.media-list-item:nth-child(${carouselList.length - j})`
         ).style.opacity = 0
+        mediaList.querySelector(
+          `.media-list-item:nth-child(${carouselList.length - j})`
+        ).style.pointerEvents = 'none'
       }
     }
 
@@ -296,6 +306,9 @@ function setSlidePosition(activeIndex) {
         mediaList.querySelector(
           `.media-list-item:nth-child(2)`
         ).style.opacity = 0
+        mediaList.querySelector(
+          `.media-list-item:nth-child(2)`
+        ).style.pointerEvents = 'none'
       }
     }
 
@@ -311,7 +324,11 @@ function setSlidePosition(activeIndex) {
         mediaList.querySelector(
           `.media-list-item:nth-child(1)`
         ).style.opacity = 1
+        mediaList.querySelector(
+          `.media-list-item:nth-child(1)`
+        ).style.pointerEvents = 'auto'
       }
+
       if (activeIndex === carouselList.length - 1) {
         mediaList.querySelector(
           `.media-list-item:nth-child(1)`
@@ -319,6 +336,12 @@ function setSlidePosition(activeIndex) {
         mediaList.querySelector(
           `.media-list-item:nth-child(2)`
         ).style.opacity = 1
+        mediaList.querySelector(
+          `.media-list-item:nth-child(1)`
+        ).style.pointerEvents = 'auto'
+        mediaList.querySelector(
+          `.media-list-item:nth-child(2)`
+        ).style.pointerEvents = 'auto'
       }
     }
   }
