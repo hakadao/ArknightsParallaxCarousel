@@ -6,4 +6,4 @@
 
 ## 效果圖
 
-![效果圖](preview/Snipaste_2021-10-09_01-22-42.jpg)
+![效果圖](https://cdn.jsdelivr.net/gh/hakadao/ArknightsParallaxCarousel/preview/Snipaste_2021-10-09_01-22-42.jpg)
