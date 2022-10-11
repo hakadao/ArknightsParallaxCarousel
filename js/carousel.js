@@ -22,6 +22,7 @@ let carouselList = [
 for (let i = 0; i < carouselList.length; i++) {
   carouselList[i].thumbnail = `img/carousel_${i + 1}.png`
 }
+
 /**
  * 初始化輪播樣式
  */
@@ -45,7 +46,7 @@ carouselList.forEach((item, index) => {
   document.querySelector('#media-layer-front .media-nav-wrapper').innerHTML += `
   <div
     class="media-nav-item"
-    active="${index === 0 ? true : false}"
+    active="${(index === 0)}"
     data-index="${index}"
     data-serial="${item.serial}"
     data-title="${item.title}"
@@ -55,7 +56,7 @@ carouselList.forEach((item, index) => {
   `
 })
 
-var activeIndex = 0 // 初始化激活的輪播索引
+let activeIndex = 0 // 初始化激活的輪播索引
 const layerFront = document.querySelector('#media-layer-front')
 const mediaSerial = layerFront.querySelector('.media-info-serial')
 const mediaTitle = layerFront.querySelector('.media-info-title')
@@ -74,19 +75,12 @@ mediaDetail.innerHTML = carouselList[0].desc
  * 設定輪播項間隔、點擊監聽事件
  */
 for (let i = 0; i < carouselList.length; i++) {
-  let mediaItem = mediaList.querySelector(
-    `.media-list-item:nth-child(${i + 1})`
-  )
+  let mediaItem = mediaList.querySelector(`.media-list-item:nth-child(${i + 1})`)
   let navItem = layerFront.querySelector(`.media-nav-item:nth-child(${i + 1})`)
 
   const mediaListItem = mediaList.querySelector(`.media-list-item:nth-child(1)`)
-  const mediaListItemWidth = getComputedStyle(mediaListItem).width.replace(
-    'px',
-    ''
-  )
-  let mediaListItemPaddingRight = getComputedStyle(
-    mediaListItem
-  ).paddingRight.replace('px', '')
+  const mediaListItemWidth = getComputedStyle(mediaListItem).width.replace('px', '')
+  let mediaListItemPaddingRight = getComputedStyle(mediaListItem).paddingRight.replace('px', '')
 
   // 計算x位移之闊度 = media-list-item 的 width + 左右padding
   let xWidth = (
@@ -97,10 +91,10 @@ for (let i = 0; i < carouselList.length; i++) {
   // 顯示前邊四張圖片，其他隱藏
   if (i <= 3) {
     mediaItem.style.transform = `translateX(${xWidth * i}px)`
-    mediaItem.style.opacity = 1
+    mediaItem.style.opacity = '1'
   } else {
     mediaItem.style.transform = `translateX(${xWidth * 3}px)`
-    mediaItem.style.opacity = 0
+    mediaItem.style.opacity = '0'
     mediaItem.style.pointerEvents = 'none'
   }
 
@@ -144,17 +138,17 @@ function carouselItemSwitching(index, direction) {
   for (let i = 0; i < carouselList.length; i++) {
     layerFront
       .querySelector(`.media-nav-item:nth-child(${i + 1})`)
-      .setAttribute('active', false)
+      .setAttribute('active', 'false')
   }
   // 激活當前選中的輪播指示標
   layerFront
     .querySelector(`.media-nav-item:nth-child(${index + 1})`)
-    .setAttribute('active', true)
+    .setAttribute('active', 'true')
 
-  imageZoom(0.25, direction, carouselList[index].thumbnail)
-  slideInText(mediaSerial, direction, 0.2, 0.4, carouselList[index].serial)
-  slideInText(mediaTitle, direction, 0.2, 0.5, carouselList[index].title)
-  slideInText(mediaDetail, direction, 0.2, 0.6, carouselList[index].desc)
+  imageZoom(0.25, direction, carouselList[index].thumbnail).then(() => {})
+  slideInText(mediaSerial, direction, 0.2, 0.4, carouselList[index].serial).then(() => {})
+  slideInText(mediaTitle, direction, 0.2, 0.5, carouselList[index].title).then(() => {})
+  slideInText(mediaDetail, direction, 0.2, 0.6, carouselList[index].desc).then(() => {})
   setSlidePosition(index)
 }
 
@@ -256,17 +250,17 @@ function setSlidePosition(activeIndex) {
 
     if (xPosition <= -xWidth) {
       mediaItem.style.transform = `translateX(${-xWidth}px)`
-      mediaItem.style.opacity = 0
+      mediaItem.style.opacity = '0'
       mediaItem.style.pointerEvents = 'none'
     } else if (xPosition >= xWidth * 4) {
       mediaItem.style.transform = `translateX(${xWidth * 4}px)`
-      mediaItem.style.opacity = 0
+      mediaItem.style.opacity = '0'
       mediaItem.style.pointerEvents = 'none'
     } else {
       mediaItem.style.transform = `translateX(${
         xWidth * i - xWidth * (activeIndex - 1)
       }px)`
-      mediaItem.style.opacity = 1
+      mediaItem.style.opacity = '1'
       mediaItem.style.pointerEvents = 'auto'
     }
 
@@ -277,7 +271,7 @@ function setSlidePosition(activeIndex) {
         ).style.transform = `translateX(${xWidth * -j}px)`
         mediaList.querySelector(
           `.media-list-item:nth-child(${carouselList.length})`
-        ).style.opacity = 1
+        ).style.opacity = '1'
         mediaList.querySelector(
           `.media-list-item:nth-child(${carouselList.length})`
         ).style.pointerEvents = 'auto'
@@ -291,7 +285,7 @@ function setSlidePosition(activeIndex) {
         ).style.transform = `translateX(${-xWidth}px)`
         mediaList.querySelector(
           `.media-list-item:nth-child(${carouselList.length - j})`
-        ).style.opacity = 0
+        ).style.opacity = '0'
         mediaList.querySelector(
           `.media-list-item:nth-child(${carouselList.length - j})`
         ).style.pointerEvents = 'none'
@@ -305,7 +299,7 @@ function setSlidePosition(activeIndex) {
         ).style.transform = `translateX(${xWidth * 4}px)`
         mediaList.querySelector(
           `.media-list-item:nth-child(2)`
-        ).style.opacity = 0
+        ).style.opacity = '0'
         mediaList.querySelector(
           `.media-list-item:nth-child(2)`
         ).style.pointerEvents = 'none'
@@ -323,7 +317,7 @@ function setSlidePosition(activeIndex) {
       if (activeIndex === carouselList.length - 2) {
         mediaList.querySelector(
           `.media-list-item:nth-child(1)`
-        ).style.opacity = 1
+        ).style.opacity = '1'
         mediaList.querySelector(
           `.media-list-item:nth-child(1)`
         ).style.pointerEvents = 'auto'
@@ -332,10 +326,10 @@ function setSlidePosition(activeIndex) {
       if (activeIndex === carouselList.length - 1) {
         mediaList.querySelector(
           `.media-list-item:nth-child(1)`
-        ).style.opacity = 1
+        ).style.opacity = '1'
         mediaList.querySelector(
           `.media-list-item:nth-child(2)`
-        ).style.opacity = 1
+        ).style.opacity = '1'
         mediaList.querySelector(
           `.media-list-item:nth-child(1)`
         ).style.pointerEvents = 'auto'
