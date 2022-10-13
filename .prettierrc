@@ -1,0 +1,15 @@
+{
+  "printWidth": 120,
+  "tabWidth": 2,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "semi": false,
+  "wrap_attributes": "auto",
+  "proseWrap": "always",
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "jsxBracketSameLine": true,
+  "useTabs": false,
+  "eslintIntegration": true,
+  "endOfLine": "auto"
+}
